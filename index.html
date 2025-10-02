@@ -62,10 +62,7 @@
 
 
         if (window.matchMedia('(display-mode: standalone)').matches) {
-            setTimeout(() => {
-                document.querySelector('.launch-button').click();
-            }, 500);
-            window.location.href = deepLink;
+            window.location.href = 'intent://open/#Intent;scheme=lightninglauncher;package=com.threethan.LightningLauncher;end';
         }
 
     </script>
