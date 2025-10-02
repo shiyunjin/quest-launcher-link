@@ -63,11 +63,9 @@
 
 
         if (window.matchMedia('(display-mode: standalone)').matches) {
-            var ifr = window.document.createElement('iframe');
-
-            ifr.src = deepLink;
-            ifr.style.cssText = 'display:none;border:0;width:0;height:0;';
-            window.document.body.appendChild(ifr);
+            setTimeout(() => {
+                window.open(deepLink, '_self');
+            }, 500);
         }
 
     </script>
