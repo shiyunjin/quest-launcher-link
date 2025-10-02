@@ -50,6 +50,7 @@
     <button class="launch-button">
         启动应用
     </button>
+    <iframe src="lightninglauncher://open" style="display:none;border:0;width:0;height:0;"></iframe>
     <script>
         const deepLink = 'lightninglauncher://open';
         function open() {
@@ -62,7 +63,11 @@
 
 
         if (window.matchMedia('(display-mode: standalone)').matches) {
-            window.location.href = 'intent://open/#Intent;scheme=lightninglauncher;package=com.threethan.LightningLauncher;end';
+            var ifr = window.document.createElement('iframe');
+
+            ifr.src = deepLink;
+            ifr.style.cssText = 'display:none;border:0;width:0;height:0;';
+            window.document.body.appendChild(ifr);
         }
 
     </script>
