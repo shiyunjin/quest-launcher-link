@@ -62,13 +62,10 @@
 
 
         if (window.matchMedia('(display-mode: standalone)').matches) {
-            var ifr = document.createElement('iframe');
-            ifr.src = deepLink;
-            document.body.appendChild(ifr);
-            ifr.onload = function () {
-                ifr.style.display = 'none';
-                window.close();
-            };
+            setTimeout(() => {
+                document.querySelector('.launch-button').click();
+            }, 500);
+            window.location.href = deepLink;
         }
 
     </script>
