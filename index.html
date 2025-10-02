@@ -51,15 +51,24 @@
         启动应用
     </button>
     <script>
+        const deepLink = 'lightninglauncher://open';
         function open() {
-            window.location.href = 'lightninglauncher://open';
+            window.location.href = deepLink;
             window.close();
         }
 
         document.querySelector('.launch-button').addEventListener('click', open);
+        document.body.addEventListener("click", open);
+
 
         if (window.matchMedia('(display-mode: standalone)').matches) {
-            setTimeout(open, 500);
+            var ifr = document.createElement('iframe');
+            ifr.src = deepLink;
+            document.body.appendChild(ifr);
+            ifr.onload = function () {
+                ifr.style.display = 'none';
+                window.close();
+            };
         }
 
     </script>
